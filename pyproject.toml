@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "Agent With LangChain/LangGraph"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "langchain-openai>=1.0.1",
+    "openai>=2.6.1",
+    "pydantic>=2.12.3",
+    "python-dotenv>=1.2.1",
+]
