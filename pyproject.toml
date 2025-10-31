@@ -5,8 +5,22 @@ description = "Agent With LangChain/LangGraph"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "langchain-openai>=1.0.1",
-    "openai>=2.6.1",
-    "pydantic>=2.12.3",
-    "python-dotenv>=1.2.1",
+    "alibabacloud-bailian20231229==1.8.2",
+    "bs4>=0.0.2",
+    "dashscope>=1.23.5",
+    "langchain>=0.3.25",
+    "langchain-experimental>=0.3.4",
+    "langchain-mcp-adapters>=0.1.1",
+    "langchain-ollama>=0.3.2",
+    "langchain-openai>=0.3.16",
+    "langgraph>=0.6.0",
+    "langgraph-checkpoint-mongodb>=0.1.4",
+    "langgraph-checkpoint-redis>=0.0.7",
+    "langgraph-supervisor>=0.0.29",
+    "openai>=1.78.0",
+    "psutil>=7.0.0",
+    "pyautogui>=0.9.54",
+    "pydantic>=2.11.4",
+    "pymysql>=1.1.1",
+    "selenium>=4.34.2",
 ]

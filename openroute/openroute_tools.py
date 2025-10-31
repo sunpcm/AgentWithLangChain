@@ -20,28 +20,17 @@ def add(a,b):
     print(b)
     return a + b
 
-# add_tools = Tool.from_function(
-#     func=add,
-#     name='add_tools',
-#     description='Add two numbers',
-# )
-
 tool_dict = {
     "add": add,
 }
 
 llm_with_tools = llm.bind_tools([add])
 
-# prompt = chat_prompt_template.format_messages(role='前端', domain='React', question='你擅长什么？')
 chain = chat_prompt_template | llm_with_tools
 
 resp = chain.invoke(input={"role": "计算", "domain": "数学", "question": "100加100等于多少" })
 
-# for chunk in resp:
-#     print(chunk.content, end="")
-
 print(resp)
-
 
 for tool_calls in resp.tool_calls:
     args = tool_calls["args"]
