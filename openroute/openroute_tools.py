@@ -12,17 +12,20 @@ class AddInputArgs(BaseModel):
 
 @tool(
     description="add two numbers",
-    args_schema=AddInputArgs
-
+    args_schema=AddInputArgs,
+    return_direct=True,
 )
 def add(a,b):
-    print(a)
-    print(b)
     return a + b
+
+def create_calc_tools():
+    return [add]
 
 tool_dict = {
     "add": add,
 }
+
+calc_tools = create_calc_tools()
 
 llm_with_tools = llm.bind_tools([add])
 
@@ -40,4 +43,3 @@ for tool_calls in resp.tool_calls:
     tool_func = tool_dict[func_name]
     tool_context = tool_func.invoke(input=args)
     print(tool_context)
-    # tool_content = tool_func.invoke()

@@ -1,6 +1,7 @@
 from langchain_core.prompts import ChatMessagePromptTemplate, ChatPromptTemplate
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from pydantic import SecretStr
+from pydantic import SecretStr, BaseModel, Field
 from os import environ
 from dotenv import load_dotenv
 
@@ -27,3 +28,23 @@ chat_prompt_template = ChatPromptTemplate.from_messages([
     system_message_template,
     human_message_template
 ])
+
+class AddInputArgs(BaseModel):
+    a: int = Field(description="first number")
+    b: int = Field(description="second number")
+
+@tool(
+    description="add two numbers",
+    args_schema=AddInputArgs,
+    return_direct=False,
+)
+def add(a,b):
+    print('Add tools, 314')
+    return a + b
+
+def create_calc_tools():
+    return [add]
+
+tool_dict = {
+    "add": add,
+}
